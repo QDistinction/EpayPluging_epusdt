@@ -23,6 +23,7 @@ try {
         ),
         true
     );
+    echo $json;
 
     if ($res["status_code"] == 200) {
         $pay_url = $res['data']['payment_url'];

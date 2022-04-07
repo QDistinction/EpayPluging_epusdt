@@ -1,11 +1,12 @@
-<?php 
-if(!defined('IN_PLUGIN'))exit();
-if(empty($_POST))die("fail");
-
+<?php
 require_once(PAY_ROOT."inc/utils.php");
-$utils=new Utils;
+if(!defined('IN_PLUGIN'))exit();
 
 $data = $_POST;
+if (empty($data))die("fail");
+
+$utils=new Utils;
+
 $signature = $utils->Sign($data, $channel["appkey"]);
 if ($data['signature'] != $signature) { //不合法的数据
     echo 'fail';
